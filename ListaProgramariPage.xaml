@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:local="clr-namespace:ProgramareRevizie"
+          x:Class="ProgramareRevizie.ListaProgramariPage"
+          Title="Lista serviciilor pentru revizie"
+          BackgroundColor="#F5F5F5">
+    <StackLayout Margin="20">
+        <Editor Placeholder="Introduceți programarea"
+             Text="{Binding Description}"
+             HeightRequest="50"
+             BackgroundColor="#FFFFFF"
+             TextColor="#000000">
+            <Editor.Behaviors>
+                <local:ValidationBehaviour />
+            </Editor.Behaviors>
+        </Editor>
+        <Grid Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Text="Salvează revizia"
+                 Clicked="OnSaveButtonClicked"
+                 BackgroundColor="#6200EE"
+                 TextColor="#FFFFFF"
+                 CornerRadius="10"
+                 Margin="0,0,10,0"/>
+            <Button Grid.Column="1"
+                 Text="Șterge revizia"
+                 Clicked="OnDeleteButtonClicked"
+                 BackgroundColor="#6200EE"
+                 TextColor="#FFFFFF"
+                 CornerRadius="10"
+                 Margin="10,0,0,0"/>
+        </Grid>
+        <ListView x:Name="listView"
+              Margin="0,20,0,0"
+              BackgroundColor="#FFFFFF">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Description}"
+                          Detail="{Binding Date}"
+                          TextColor="#000000"
+                          DetailColor="#7F8C8D"
+                          />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1"
+                Text="Șterge serviciul"
+                Clicked="OnDeleteItemButtonClicked"
+                BackgroundColor="#6200EE"
+                TextColor="#FFFFFF"
+                CornerRadius="10"
+                Margin="10,0,0,0"/>
+
+            <Button Text="Alege un serviciu"
+                Clicked="OnChooseButtonClicked"
+                BackgroundColor="#6200EE"
+                TextColor="#FFFFFF"
+                CornerRadius="10"
+                Margin="0,0,10,0"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>

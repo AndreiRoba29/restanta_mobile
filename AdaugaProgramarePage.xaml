@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProgramareRevizie.AdaugaProgramarePage"
+             Title="Programări auto"
+             BackgroundColor="#F4F4F4">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Adaugă programare"
+             Clicked="OnProgramareAddedClicked"
+             Order="Primary"
+             Priority="0" />
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <Label Text="Lista programărilor" 
+               FontSize="Large" 
+               TextColor="#3E3E3E" 
+               Margin="20,20,20,0"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="Start" />
+        <ListView x:Name="listView"
+                  BackgroundColor="White"
+                  Margin="20"
+                  ItemSelected="OnListViewItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10"
+                                     BackgroundColor="#ECECEC">
+                            <Label Text="{Binding Description}"
+                                   TextColor="#3E3E3E"
+                                   FontSize="Medium"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand" />
+                            <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
+                                   TextColor="#666666"
+                                   FontSize="Small"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
